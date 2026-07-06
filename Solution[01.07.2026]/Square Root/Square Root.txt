@@ -1,0 +1,27 @@
+public class Solution 
+{
+    public int solve(int N)
+    {
+        long low = 1;
+        long high = N;
+        long mid;
+
+        while(low <= high)
+        {
+            mid = (low + high) / 2;
+
+            if(mid*mid == N)      
+            {
+                return (int)mid;
+            }else if(mid*mid > N)   
+            {
+                high = mid - 1;
+            }else
+            {
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+}

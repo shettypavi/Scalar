@@ -1,0 +1,14 @@
+/*Time O(1)*/
+/*Space O(1)*/
+import java.lang.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        System.out.print((N * (N + 1)) / 2);
+    }
+}
