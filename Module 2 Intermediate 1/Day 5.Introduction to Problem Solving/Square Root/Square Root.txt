@@ -1,0 +1,48 @@
+================Solution 1=================
+Time: O(sqrt(N))
+Space : O(1)
+public class Solution 
+{
+    public int solve(int N) 
+    {
+        for(int i = 1; i <= (int)Math.sqrt(N); i++)
+        {
+            if(i * i == N)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+}
+================Solution 2=================
+Time: O(Log(N) base2)
+Space : O(1)
+public class Solution 
+{
+    public int solve(int N)
+    {
+        long low = 1;
+        long high = N;
+        long mid;
+
+        while(low <= high)
+        {
+            mid = (low + high) / 2;
+
+            if(mid*mid == N)      
+            {
+                return (int)mid;
+            }else if(mid*mid > N)   
+            {
+                high = mid - 1;
+            }else
+            {
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+}
