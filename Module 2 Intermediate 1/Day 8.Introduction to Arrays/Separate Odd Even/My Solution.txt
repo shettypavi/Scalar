@@ -1,0 +1,55 @@
+/*
+Time : O(T*N)
+Space : O(N)
+*/
+
+import java.lang.*;
+import java.util.*;
+
+public class Main 
+{
+    public static void main(String[] args)
+    {
+        // YOUR CODE GOES HERE
+        // Please take input and print output to standard input/output (stdin/stdout)
+        // DO NOT USE ARGUMENTS FOR INPUTS
+        // E.g. 'Scanner' for input & 'System.out' for output
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        int N = sc.nextInt();
+
+        for(int i = 1; i <= T; i++)
+        {
+            ArrayList<Integer> even = new ArrayList<Integer>();
+            ArrayList<Integer> odd = new ArrayList<Integer>();
+            String[] str = new String[N];
+            sc.nextLine();
+            str = sc.nextLine().split(" ");
+
+            for(String num : str)
+            {
+                if(Integer.parseInt(num) % 2 == 0)
+                {
+                    even.add(Integer.parseInt(num));
+                }else
+                {
+                    odd.add(Integer.parseInt(num));
+                }
+            }
+
+            for(int e : odd)
+            {
+                System.out.print(e + " ");
+            }
+
+            System.out.println();
+
+            for(int e : even)
+            {
+                System.out.print(e + " ");
+            }
+
+            System.out.println();
+        }
+    }
+}

@@ -1,0 +1,22 @@
+/*
+Time : O(N)
+Space: O(N)
+*/
+public class Solution 
+{
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int[] solve(final int[] arr) 
+    {
+        int N = arr.length;
+        int[] output = new int[N];
+        int startIdx = 0;
+        int endIdx = N - 1;
+
+        while(startIdx < N)
+        {
+            output[startIdx++] = arr[endIdx--];
+        }
+
+        return output;
+    }
+}

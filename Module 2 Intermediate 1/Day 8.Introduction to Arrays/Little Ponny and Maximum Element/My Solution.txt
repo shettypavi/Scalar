@@ -1,0 +1,35 @@
+/*
+Time : O(N)
+*/
+public class Solution 
+{
+    public int solve(int[] arr, int key)
+    {
+        int count = 0;
+        boolean found = false;
+
+        for(int e : arr)
+        {
+            if(e == key)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if(found)
+        {
+            for(int e : arr)
+            {
+                if(e > key)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        return -1;
+    }
+}

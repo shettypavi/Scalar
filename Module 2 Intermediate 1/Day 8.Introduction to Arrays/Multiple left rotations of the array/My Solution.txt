@@ -1,0 +1,44 @@
+public class Solution 
+{
+    public int[][] solve(int[] A, int[] B) 
+    {
+        int row = B.length;
+        int N = A.length;   // colms  
+        int[][] ans = new int[row][N];
+        int arr[] = new int[N];
+
+        
+        for(int i = 0; i < row; i++)
+        {
+            for(int j = 0; j < N; j++)
+            {
+                arr[j] = A[j];
+            }
+
+            B[i] = B[i] % N;
+            
+            reverse(arr, 0, N - 1);
+            reverse(arr, 0, N - B[i] - 1);
+            reverse(arr, N - B[i], N - 1);
+
+            for(int j = 0; j < N; j++)
+            {
+                ans[i][j] = arr[j];
+            }
+        }
+
+        return ans;
+    }
+
+    public void reverse(int [] arr, int sidx, int eidx)
+    {
+        int temp;
+
+        while(sidx < eidx)
+        {
+            temp = arr[sidx];
+            arr[sidx++] = arr[eidx];
+            arr[eidx--] = temp;
+        }
+    }
+}
