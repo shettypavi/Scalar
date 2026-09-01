@@ -1,0 +1,26 @@
+public class Solution 
+{
+    public int solve(int[] arr)
+    {
+        int max = Integer.MIN_VALUE;
+        int ans = -1;
+
+        for(int currentElement  arr)
+        {
+            if(max  currentElement)
+            {
+                max = currentElement;
+            }
+        }
+
+        for(int currentElement  arr)
+        {
+            if(currentElement != max && ans  currentElement)
+            {
+                ans = currentElement;
+            }
+        }
+
+        return ans;
+    }
+}

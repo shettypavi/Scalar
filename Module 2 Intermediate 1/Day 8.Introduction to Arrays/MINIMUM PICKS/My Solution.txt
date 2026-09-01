@@ -1,0 +1,37 @@
+/*
+Time  :  O(N)
+Space :  O(1)
+*/
+public class Solution 
+{
+  // Do not write code to include libraries, main() function or accept any input from the console.
+  // Initialization code is already written and hidden from you. Do not write code for it again.
+  public int solve(int[] arr) 
+  {
+    // Just write your code below to complete the function. Required input is available to you as the function arguments.
+     // Do not print the result or any output. Just return the result via this function.
+    
+    int N = arr.length;
+    int minOdd  = Integer.MAX_VALUE;
+    int maxEven = Integer.MIN_VALUE;
+
+    for(int ele : arr)
+    {
+        if(((ele % 2) + 2) % 2 == 0)    // for -ve no: a % m =  (a % m + m ) % m
+        {
+            if(maxEven < ele)
+            {
+                maxEven = ele;
+            }
+        }else
+        {
+            if(minOdd > ele)
+            {
+                minOdd = ele;
+            }
+        }
+    }
+
+    return maxEven - minOdd;
+  }
+}
