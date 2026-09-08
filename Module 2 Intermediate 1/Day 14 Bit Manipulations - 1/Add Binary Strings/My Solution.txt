@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+public class Solution
+{	
+	public static String addBinary(String A, String B) 
+	{
+		String ans = ""; 
+		int lengthA = A.length();
+		int lengthB = B.length();
+		
+		int difference = java.lang.Math.abs(lengthA - lengthB);
+		int N;
+		
+		if(difference > 0)
+		{
+			if(lengthA > lengthB)
+			{
+				N = lengthA;
+				B = appendZeors(B, difference);
+			}else
+			{
+				N = lengthB;
+				A = appendZeors(A, difference);
+			}
+		}else //ie. lengthA == lengthB;
+		{
+			N = lengthA;
+		}
+			
+		
+		int carryBit = 0;
+		int sumBit;
+		
+		for(int i = N - 1; i >= 0; i--)
+		{
+			sumBit = carryBit + Character.getNumericValue(A.charAt(i)) + Character.getNumericValue(B.charAt(i));
+			carryBit = sumBit / 2;
+			ans = ans + String.valueOf(sumBit % 2);
+		}
+		
+		if(carryBit == 1)
+		{
+			return '1' + new StringBuilder(ans).reverse().toString();
+		}
+		
+		return new StringBuilder(ans).reverse().toString();
+    }
+
+	public static String appendZeors(String num, int difference) 
+	{
+		String padding = new String(new char[difference]).replace("\0", "0");
+		return padding + num;
+	}
+
+}
+=================Solution 2=================
+public class Solution 
+{
+    public String addBinary(String str1, String str2) 
+    {
+        int maxLen = Math.max(str1.length(),str2.length());
+        int minLen = Math.min(str1.length(),str2.length());
+        int sum = 0;
+        int carry = 0;
+        String ans = "";
+        final String zero = "0";
+        final String one = "1";
+
+        for(int i = 1; i <= maxLen; i++)
+        {
+            if(i <= minLen)
+            {
+                sum = getIntVal(str1.charAt(str1.length() - i)) + getIntVal(str2.charAt(str2.length() - i)) + carry;
+                
+            }else
+            {
+                if(str1.length() > str2.length())
+                {
+                    sum = getIntVal(str1.charAt(str1.length() - i))  + carry;
+                }else if(str1.length() < str2.length())
+                {
+                    sum = getIntVal(str2.charAt(str2.length() - i)) + carry;
+                }
+            }
+
+            carry = sum / 2;
+            
+            if(sum % 2 == 0)
+            {
+                ans = zero + ans;
+            }else
+            {
+                ans = one + ans;
+            }
+        }
+
+        if(carry == 1)
+        {
+            return one + ans;
+        }
+
+        return ans;
+    }
+
+    public int getIntVal(char ch)
+    {
+        if(ch == '0')
+        {
+            return 0;
+        }
+
+        return 1;
+    }
+}

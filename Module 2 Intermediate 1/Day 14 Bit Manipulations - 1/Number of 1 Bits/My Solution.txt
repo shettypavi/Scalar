@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Solution 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		
+		System.out.print(numSetBits(num));
+	}
+	
+	public static int numSetBits(int num)
+	{
+		int count = 0;
+		
+		while(num != 0)
+		{	
+			if(num % 2 == 1)	//if reminder = 1
+			{
+				count++;
+			}
+			
+			num = num / 2;
+		}
+		
+		return count;
+    }
+}

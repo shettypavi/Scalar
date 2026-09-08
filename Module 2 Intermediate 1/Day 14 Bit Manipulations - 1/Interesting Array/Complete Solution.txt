@@ -1,0 +1,56 @@
+====================Java Solution====================
+public class Solution {
+    public String solve(ArrayList < Integer > A) {
+        int cnt = 0;
+        for (int x: A) {
+            if (x % 2 == 1)
+                cnt++;
+        }
+        if (cnt % 2 == 1)
+            return "No";
+        else
+            return "Yes";
+    }
+}
+====================C# Solution====================
+class Solution {
+    public string solve(List<int> A) {
+        int cnt = 0;
+        foreach (int x in A) {
+            if (x % 2 == 1)
+                cnt++;
+        }
+        // checks the parity of the number of odd elements
+        if (cnt % 2 == 1)
+            return "No";
+        else
+            return "Yes";
+    }
+}
+====================C++ Solution====================
+string Solution::solve(vector < int > & A) {
+    int i, ctr = 0;
+    for (i = 0; i < A.size(); i++) {
+        if (A[i] % 2)
+            ctr++;
+    }
+    // checks the parity of the number of odd elements
+    if (ctr % 2)
+        return "No";
+    else
+        return "Yes";
+}
+====================Python Solution====================
+class Solution:
+    # @param A : list of integers
+    # @return a strings
+    def solve(self, A):
+        cnt = 0
+        for val in A:
+            if val % 2:
+                cnt += 1
+        # checks the parity of the number of odd elements
+        if cnt % 2 == 0:
+            return "Yes"
+        else:
+            return "No"

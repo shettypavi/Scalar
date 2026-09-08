@@ -1,0 +1,16 @@
+public class Solution {
+    public int solve(int[] A) {
+        int n=A.length;
+        int val=0;
+        for(int i=0;i<n;i++)
+        {
+            val=Math.max(val,A[i]);
+        }
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+          ans+=val-A[i];
+        }
+        return ans;
+    }
+}
