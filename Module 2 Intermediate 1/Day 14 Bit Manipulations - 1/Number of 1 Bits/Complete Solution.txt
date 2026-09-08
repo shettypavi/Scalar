@@ -1,0 +1,101 @@
+============================Java Solution============================
+Method 1:
+
+public class Solution {
+    public int numSetBits(long A) {
+        int total_ones = 0;
+        while (A != 0) {
+            // rightmost set bit becomes unset
+            A = A & (A - 1);
+            total_ones++;
+        }
+        return total_ones;
+    }
+}
+
+Method 2:
+
+public class Solution {
+    public int numSetBits(long A) {
+        int total_ones = 0;
+        for(int i = 0; i < 30; i++){
+            if((A & (1 << i)) > 0){
+                total_ones += 1;
+            }
+        }
+        return total_ones;
+    }
+}
+============================C Solution============================
+Method 1:
+
+int numSetBits(int A) {
+    int ct = 0;
+    while(A){
+        // rightmost set bit becomes unset
+        A = A & (A - 1);
+        ct++;
+    }
+    return ct;
+}
+
+Method 2:
+
+int numSetBits(int A) {
+    int total_ones = 0, i;
+    for(i = 0; i < 30; i++){
+        if((A & (1 << i)) > 0){
+            total_ones += 1;
+        }
+    }
+    return total_ones;
+}
+============================Python Solution============================
+Method 1:
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def numSetBits(self, A):
+        ret = 0
+        while A != 0:
+            # rightmost set bit becomes unset
+            A = A & (A - 1)
+            ret += 1
+        return ret
+        
+Method 2:
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def numSetBits(self, A):
+        total_ones = 0
+        for i in range(30):
+            if((A & (1 << i)) > 0):
+                total_ones += 1
+        return total_ones
+============================C++ Solution============================
+Method 1:
+
+int Solution::numSetBits(int A) {
+    int total_ones = 0;
+    while (A != 0) {
+        // rightmost set bit becomes unset
+        A = A & (A - 1);
+        total_ones++;
+    }
+    return total_ones;
+}
+
+Method 2:
+
+int Solution::numSetBits(int A) {
+    int total_ones = 0;
+    for(int i = 0; i < 30; i++){
+        if((A & (1 << i)) > 0){
+            total_ones += 1;
+        }
+    }
+    return total_ones;
+}

@@ -1,0 +1,25 @@
+/*
+Time : O(N)
+Space : O(N)
+*/
+public class Solution 
+{
+    public int[] solve(int[] arr)
+    {
+        int product = 1;
+        int N = arr.length;
+        int[] ans = new int[N];
+
+        for(int e : arr)
+        {
+            product = product * e;
+        }
+
+        for(int idx = 0; idx < N; idx++)
+        {
+            ans[idx] = product / arr[idx];
+        }
+
+        return ans;
+    }
+}

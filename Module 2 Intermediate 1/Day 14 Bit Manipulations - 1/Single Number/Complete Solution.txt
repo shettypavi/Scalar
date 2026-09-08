@@ -1,0 +1,52 @@
+======================Java Solution======================
+public class Solution {
+    // DO NOT MODIFY THE LIST
+    public int singleNumber(final List < Integer > A) {
+        int num = 0;
+        for (int val: A) {
+            num ^= val;
+        }
+        return num;
+    }
+}
+======================C# Solution======================
+class Solution {
+    public int singleNumber(List < int > A) {
+        int num = 0;
+        foreach(int val in A) {
+            // xor of all the elements of the array
+            num ^= val;
+        }
+        return num;
+    }
+}
+======================C Solution======================
+int singleNumber(const int * A, int n1) {
+    int index = 0;
+    int result = 0;
+    for (index = 0; index < n1; index++) {
+        // xor of all the elements of the array
+        result = result ^ A[index];
+    }
+    return result;
+}
+======================C++ Solution======================
+int Solution::singleNumber(const vector < int > & A) {
+    int n = A.size();
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        // xor of all the elements of the array
+        result ^= A[i];
+    }
+    return result;
+}
+======================Python Solution======================
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def singleNumber(self, A):
+        ret = A[0]
+        for i in range(1, len(A)):
+            # xor of all the elements of the array
+            ret ^= A[i]
+        return ret

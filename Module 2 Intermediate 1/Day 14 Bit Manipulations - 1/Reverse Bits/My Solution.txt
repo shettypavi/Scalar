@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Solution 
+{
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		long inputNumber = sc.nextLong();
+		
+		System.out.print(reverse(inputNumber));
+	}
+
+	public static long reverse(long num) 
+	{
+		long ans = 0;
+		long reminder = 0;
+		int i = 31;
+		
+		while(num > 0 && i >= 0)
+        {
+            reminder = num % 2;
+            ans = ans | (reminder << i);
+            num = num / 2;
+            i--;
+        }
+		
+		return ans;
+	}
+}

@@ -1,0 +1,82 @@
+/*
+Time : O(N)		// O(2*N) 
+Space : O(N)	//to buildPrefixSum
+*/
+public class Solution 
+{
+    public int solve(int[] arr)
+    {
+        int N = arr.length;
+        long [] PFS = new long[N];
+        long leftSum;
+        long rightSum;
+
+        buildPrefixSum(PFS, arr);
+
+        for(int i = 0; i < N; i++)
+        {
+            if(i == 0)
+            {
+                leftSum = 0;
+                rightSum = PFS[N - 1] - PFS[i];
+            }else
+            {
+                leftSum = PFS[i - 1];
+                rightSum = PFS[N - 1] - PFS[i];
+            }
+
+            if(leftSum == rightSum)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void buildPrefixSum(long[] PFS, int [] arr)
+    {
+        int N = arr.length;
+
+        PFS[0] = arr[0];
+        
+        for(int i = 1; i < N; i++)
+        {
+            PFS[i] = PFS[i - 1] + arr[i];
+        }
+    }
+}
+===========================Solution 2 ===========================
+/*
+implemented after reffering scalar solution
+Time : O(N)		// O(2*N) 
+Space : O(1)	
+*/
+public class Solution 
+{
+    public int solve(int[] arr)
+    {
+        int N = arr.length;
+        long rightSum = 0;
+        long leftSum = 0;
+
+        for(int i = 0; i < N; i++)
+        {
+            rightSum = rightSum + arr[i];
+        }
+
+        for(int i = 0; i < N; i++)
+        {
+            rightSum = rightSum - arr[i];
+
+            if(leftSum == rightSum)
+            {
+                return i;
+            }
+
+            leftSum = leftSum + arr[i];
+        }
+
+        return -1;
+    }
+}
