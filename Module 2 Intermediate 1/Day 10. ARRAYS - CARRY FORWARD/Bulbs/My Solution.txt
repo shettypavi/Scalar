@@ -1,0 +1,19 @@
+public class Solution 
+{
+    public int bulbs(int[] arr)
+    {
+        int count = 0;
+        int state = 0;
+
+        for(int e : arr)
+        {
+            if(e == state)
+            {
+                count++;
+                state = 1 - state;
+            }
+        }
+
+        return count;
+    }
+}

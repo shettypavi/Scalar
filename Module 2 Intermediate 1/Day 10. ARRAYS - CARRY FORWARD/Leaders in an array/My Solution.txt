@@ -1,0 +1,25 @@
+Time : O(N)
+Space : O(N)
+
+public class Solution 
+{
+    public ArrayList<Integer> solve(ArrayList<Integer> arr) 
+    {
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        int N = arr.size();
+        int leader = arr.get(N - 1);
+
+        ans.add(leader);
+
+        for(int i = N - 2; i >= 0; i--)
+        {
+            if(arr.get(i) > leader)
+            {
+                leader = arr.get(i);
+                ans.add(leader);
+            }
+        }
+
+        return ans;
+    }
+}

@@ -1,0 +1,17 @@
+public class Solution {
+  public int bulbs(ArrayList < Integer > A) {
+
+    int state = 0, ans = 0;
+
+    // state variable will represent the state which we have to change.
+    for (int i = 0; i < A.size(); i++) {
+
+      if (A.get(i) == state) {
+        ans++;
+        // As we will switch this, all the bulbs on right side will also change. So, change state = 1 - state
+        state = 1 - state;
+      }
+    }
+    return ans;
+  }
+}

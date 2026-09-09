@@ -1,0 +1,29 @@
+public class Solution 
+{
+    public String solve(int[] arr) 
+    {
+        int N = arr.length;
+
+        if(!isEven(N))
+        {
+            return "NO";
+        }
+
+        if(isEven(arr[0]) && isEven(arr[N - 1]))
+        {
+            return "YES";
+        }
+
+        return "NO";
+    }
+
+    public boolean isEven(int num)
+    {
+        if(num % 2 == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+}
