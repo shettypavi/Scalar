@@ -1,0 +1,16 @@
+public class Solution {
+    public int solve(String A) {
+        TreeSet<Character> se = new TreeSet<>();
+        se.add('a'); se.add('e'); se.add('i'); se.add('o'); se.add('u');
+        se.add('A'); se.add('E'); se.add('I'); se.add('O'); se.add('U');
+        
+        int n = A.length();
+        long ans = 0;
+        for(int i = 0; i < n; i++){
+            if(se.contains(A.charAt(i))){
+                ans += (n - i);
+            }
+        }
+        return (int)(ans%10003);
+    }
+}
