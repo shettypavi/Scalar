@@ -1,0 +1,27 @@
+public class Solution 
+{
+    public long solve(int N, int[] arr) 
+    {
+        long ans = (long)N * (N + 1) / 2;
+        long zeroCnt = 0;
+        int i = 0;
+
+        while(i < N)
+        {
+            if(arr[i] == 0)
+            {
+                zeroCnt = 0;
+                while(i < N && arr[i] == 0)
+                {
+                    zeroCnt++;
+                    i++;
+                }
+
+                ans = ans - ((zeroCnt * (zeroCnt + 1)) / 2);
+            }
+            i++;
+        }
+
+        return ans;
+    }
+}

@@ -1,0 +1,14 @@
+public class Solution 
+{
+    public int compressBits(int[] arr)
+    {
+        int ans = 0;
+
+        for(int e : arr)
+        {
+            ans = ans ^ e;
+        }
+
+        return ans;
+    }
+}

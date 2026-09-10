@@ -1,0 +1,7 @@
+public class Solution 
+{
+    public long solve(long N, int B) 
+    {
+        return (N >> B) << B;
+    }
+}

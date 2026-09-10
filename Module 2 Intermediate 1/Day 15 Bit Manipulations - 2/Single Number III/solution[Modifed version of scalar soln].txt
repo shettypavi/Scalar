@@ -1,0 +1,91 @@
+public class Solution {
+    public int[] solve(int[] A) {
+        int aXorb = 0; // the result of a xor b;
+        for (int item: A)
+            aXorb ^= item;
+        int lastBit = 0;	 // the last bit that a diffs b
+        int temp = aXorb;
+        int bitPosition = 0;
+        while(temp != 0)
+        {
+            if(temp % 2 == 0)
+            {
+                temp = temp >> 1;
+                bitPosition++;
+            }else{
+                lastBit = 1 << bitPosition;
+                break;
+            }
+        }
+
+        int num1 = 0, num2 = 0;
+        for (int item: A) {
+            // based on the last bit, group the items into groupA(include a) and groupB
+            if ((item & lastBit) != 0)
+                num1 = num1 ^ item;
+            else
+                num2 = num2 ^ item;
+        }
+        int x = Math.min(num1, num2), y = Math.max(num1, num2);
+        int[] ans = new int[2];
+        ans[0] = x;
+        ans[1] = y;
+        return ans;
+    }
+}
+===============Solution2===============
+public class Solution 
+{
+    public int[] solve(int[] arr) 
+    {
+        int count = 0;
+        int[] ans = new int[2];
+        int i;
+        int N = arr.length;
+        int num1 = 0;
+        int num2 = 0;
+        
+        for(i = 0; i < N; i++)
+        {
+            count = 0;
+
+            for(int e : arr)
+            {
+                if((e >> i & 1) == 1)
+                {
+                    count++;
+                }
+            }
+
+            if(count % 2 == 1)
+            {
+                break;
+            }
+        }
+
+        for(int e : arr)
+        {
+            if((e >> i & 1) == 1)
+            {
+                num1 = num1 ^ e;
+            }else
+            {
+                num2 = num2 ^ e;
+            }
+        }
+
+        
+
+        if(num1 < num2)
+        {
+            ans[0] = num1;
+            ans[1] = num2;
+        }else
+        {
+            ans[0] = num2;
+            ans[1] = num1;
+        }
+
+        return ans;
+    }
+}
