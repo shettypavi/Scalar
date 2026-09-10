@@ -1,0 +1,12 @@
+==================Java Solution==================
+public class Solution {
+    public int solve(int A) {
+        //We need to find the number of set bits in binary representation of A
+        int ans = 0;
+        while(A>0){
+            if(A%2==1) ans++;
+            A /= 2;
+        }
+        return ans;
+    }
+}

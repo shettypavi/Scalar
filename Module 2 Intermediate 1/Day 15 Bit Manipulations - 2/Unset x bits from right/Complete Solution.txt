@@ -1,0 +1,6 @@
+class Solution:
+    def solve(self, A, B):
+        ans = A
+        for i in range(B):
+            if A & (1<<i) : ans -= (1<<i)
+        return ans
