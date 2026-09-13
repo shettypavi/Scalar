@@ -1,0 +1,94 @@
+==============Java==============
+class Solution {
+    public int[] solve(int[] A, int B) {
+        ArrayList < Integer > l1 = new ArrayList < > ();
+        int n = A.length;
+        int len = 2 * B + 1;
+        for (int i = 0; i < n - len + 1; i++) {
+            int curr = -1;
+            int flag = 1;
+            for (int j = i; j < i + len; j++) {
+                if (A[j] == curr) {
+                    flag = 0;
+                    break;
+                }
+                curr = A[j];
+            }
+            if (flag == 1) {
+                l1.add(i + B);
+            }
+        }
+        int[] ret = new int[l1.size()];
+        for (int i = 0; i < l1.size(); i++) {
+            ret[i] = l1.get(i);
+        }
+        return ret;
+    }
+}
+==============Python==============
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return a list of integers
+    def solve(self, A, B):
+        l1 = []
+        n = len(A)
+        length = 2 * B + 1
+        for i in range(n - length + 1):
+            curr = -1
+            flag = 1
+            for j in range(i, i + length):
+                if (A[j] == curr):
+                    flag = 0
+                    break
+                curr = A[j]
+            if (flag == 1):
+                l1.append(i + B)
+        return l1
+==============C#==============
+class Solution {
+    public List<int> solve(List<int> A, int B) {
+        List <int> l1 = new List<int>();
+        int n = A.Count;
+        int len = 2 * B + 1;
+        for (int i = 0; i < n - len + 1; i++) {
+            int curr = -1;
+            int flag = 1;
+            for (int j = i; j < i + len; j++) {
+                if (A[j] == curr) {
+                    flag = 0;
+                    break;
+                }
+                curr = A[j];
+            }
+            if (flag == 1) {
+                l1.Add(i + B);
+            }
+        }
+        return l1;
+    }
+}
+==============C++==============
+vector < int > Solution::solve(vector < int > & A, int B) {
+    assert(A.size() >= 1 && A.size() <= 1000);
+    for (auto & x: A) assert(x >= 0 && x <= 1);
+    assert(B >= 0 && B <= ((A.size() - 1) / 2));
+    vector < int > l1;
+    int n = A.size();
+    int len = 2 * B + 1;
+    for (int i = 0; i < n - len + 1; i++) {
+        int curr = -1;
+        int flag = 1;
+        for (int j = i; j < i + len; j++) {
+            if (A[j] == curr) {
+                flag = 0;
+                break;
+            }
+            curr = A[j];
+        }
+        if (flag == 1) {
+            l1.push_back(i + B);
+        }
+    }
+    return l1;
+}

@@ -1,0 +1,27 @@
+public class Solution 
+{
+    public int solve(int[] arr, int B) 
+    {
+        long sum = 0;
+        long minSum = Long.MAX_VALUE;
+        int N = arr.length;
+        int idx = -1;
+
+        for(int i = 0; i <= N - B; i++)
+        {
+            sum = 0;
+            for(int j = i; j < i + B; j++)
+            {
+                sum = sum + arr[j];
+            }
+
+            if(sum < minSum)
+            {
+                minSum = sum;
+                idx = i;
+            }
+        }
+
+        return idx;
+    }
+}

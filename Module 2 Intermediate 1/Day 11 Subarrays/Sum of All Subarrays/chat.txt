@@ -1,0 +1,35 @@
+PS
+You
+7:24 AM
+hi
+
+PS
+You
+7:25 AM
+Not able to understand why my code is not working when it is very similay to the given solution
+
+PS
+You
+7:26 AM
+Its Passing all the trivail cases but failing on submit
+
+CK
+Chandan KumarYour TA
+Please do typecast arr[i] to long in line 38 like follows rest everything is fine in your code.
+totalSubArraySum = totalSubArraySum + ( (long)arr[i] * ( i + 1 ) * (N - i) );
+
+PS
+You
+7:42 AM
+Yes it works fine. Thanks. But in the given question the Problem Constraints says 1 <= Ai <= 10^4 then why we have to typecast array to long ? As I belive this should be converted implicit in the expression.
+
+
+CK
+Chandan KumarYour TA
+7:43 AM
+After the multiplication it would give overflow. Normally it is fine so one variable is long would convert the multiplication to long.
+
+PS
+You
+7:44 AM
+Thank you

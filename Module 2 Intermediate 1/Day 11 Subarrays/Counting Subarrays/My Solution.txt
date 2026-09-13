@@ -1,0 +1,30 @@
+Time : O(N^2)
+Space : O(1)
+public class Solution 
+{
+    public int solve(int[] arr, int B) 
+    {
+        int N = arr.length;
+        int count = 0;
+        int sum = 0;
+
+        for(int i = 0; i < N; i++)
+        {
+            sum = 0;
+            for(int j = i; j < N; j++)
+            {
+                sum = sum + arr[j];
+
+                if(sum < B)
+                {
+                    count++;
+                }else
+                {
+                    break;
+                }
+            }
+        }
+
+        return count;
+    }
+}
