@@ -1,0 +1,19 @@
+public class Solution {
+  public int[] solve(int[] A) {
+    int size = 0, left = 0, right = 0;
+    for (int l = -1, r = 0; r < A.length; r++) {
+      if (A[r] >= 0) {
+        if (size < r - l) {
+          size = r - l;
+          left = l;
+          right = r;
+        }
+      } else {
+        l = r;
+      }
+    }
+    int ans[] = new int[size];
+    for (int i = left + 1; i <= right; i++) ans[i - left - 1] = A[i];
+    return ans;
+  }
+}

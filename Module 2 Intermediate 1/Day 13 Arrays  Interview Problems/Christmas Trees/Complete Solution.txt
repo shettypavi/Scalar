@@ -1,0 +1,33 @@
+public class Solution {
+  public int solve(int[] A, int[] C) {
+    long n = A.length;
+    long min_ans = Long.MAX_VALUE;
+    for (int q = 1; q < n - 1; q++) { //traversing over q
+      long mid = (long) A[q];
+      long minn = Long.MAX_VALUE;
+      long ans = 0;
+      for (int p = 0; p < q; p++) { //finding minimum cost height < A[q]
+        if (A[p] < mid) {
+          minn = Math.min((long) C[p], minn);
+        }
+      }
+      if (minn == Long.MAX_VALUE) { //if it doesn't exist, skip
+        continue;
+      } else ans += minn;
+      minn = Long.MAX_VALUE;
+      for (int r = (int) q + 1; r < (int) n; r++) { //finding minimum cost height > A[q]
+        if (A[r] > mid) {
+          minn = Math.min((long) C[r], minn);
+        }
+      }
+      if (minn == Long.MAX_VALUE) { //if it doesn't exist, skip
+        continue;
+      } else ans += minn;
+      ans += C[q];
+      min_ans = Math.min(min_ans, ans);
+    }
+    if (min_ans == Long.MAX_VALUE) { //if doesnt exist, return -1
+      return -1;
+    } else return (int) min_ans;
+  }
+}
