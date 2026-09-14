@@ -1,0 +1,72 @@
+public class Solution 
+{
+    public int solve(String str)
+    {
+        int N = str.length();
+        int[] arr = new int[N];
+        int oneCnt = 0;
+        int count = 0;
+        int leftCount = 0;
+        int rightCount = 0;
+        int ans = 0;
+
+        for(int i = 0; i < N; i++)
+        {
+            arr[i] = Character.getNumericValue(str.charAt(i));
+        }
+
+        for(int e : arr)
+        {
+            if(e == 1)
+            {
+                oneCnt++;
+            }
+        }
+
+        if(oneCnt == N || oneCnt == 0)
+        {
+            return oneCnt;
+        }
+
+        for(int i = 0; i < N; i++)
+        {
+            if(arr[i] == 0)
+            {
+                leftCount = 0;
+                rightCount = 0;
+
+                for(int j = i - 1; j >= 0; j--)
+                {
+                    if(arr[j] == 1)
+                    {
+                        leftCount++;
+                    }else
+                    {
+                        break;
+                    }
+                }
+
+                for(int j = i + 1; j < N; j++)
+                {
+                    if(arr[j] == 1)
+                    {
+                        rightCount++;
+                    }else
+                    {
+                        break;
+                    }
+                }
+
+                if((leftCount + rightCount) < oneCnt)
+                {
+                    ans = Math.max(ans, leftCount + rightCount + 1);
+                }else
+                {
+                    ans = Math.max(ans, leftCount + rightCount);
+                }
+            }
+        }
+
+        return ans;
+    }
+}

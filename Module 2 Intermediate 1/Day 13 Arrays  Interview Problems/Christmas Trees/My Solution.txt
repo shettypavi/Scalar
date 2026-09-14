@@ -1,0 +1,88 @@
+=======================Solution 1=======================
+Time : O(N^3)
+Space : O(1)
+public class Solution 
+{
+    public int solve(int[] height, int[] cost) 
+	{
+		int minimumCost = Integer.MAX_VALUE;
+		int currentCost = 0;
+		int N = height.length;
+		
+		for(int i = 0; i < N - 2; i++)
+		{
+			for(int j = i + 1; j < N - 1; j++)
+			{
+				for(int k = j + 1; k < N; k++)
+				{
+					if(height[i] < height[j] && height[j] < height[k])
+					{
+						currentCost = cost[i] + cost[j] + cost[k];
+						minimumCost = Math.min(minimumCost, currentCost);
+					}
+				}
+			}
+		}
+		
+		if(minimumCost == Integer.MAX_VALUE)
+		{
+			return -1;
+		}
+		
+		return minimumCost;
+	}
+}
+=======================Solution 2=======================
+Time : O(N^2)
+Space : O(1)
+public class Solution 
+{
+    public int solve(int[] height, int[] cost) 
+	{
+		int minimumCost = Integer.MAX_VALUE;
+        int currCost = Integer.MAX_VALUE;
+        int leftCost;
+        int rightCost;
+        int N = height.length;
+		
+        for(int i = 1; i < N - 1; i++)
+        {
+            leftCost = Integer.MAX_VALUE;
+            for(int j = i - 1; j >= 0; j--)
+            {
+                if(height[j] < height[i])
+                {
+                    if(cost[j] < leftCost)
+                    {
+                        leftCost = cost[j];
+                    }
+                }
+            }
+
+            rightCost = Integer.MAX_VALUE;
+            for(int j = i + 1; j < N; j++)
+            {
+                if(height[i] < height[j])
+                {
+                    if(cost[j] < rightCost)
+                    {
+                        rightCost = cost[j];
+                    }
+                }
+            }
+
+            if(leftCost != Integer.MAX_VALUE && rightCost != Integer.MAX_VALUE)
+            {
+                currCost = leftCost + cost[i] +rightCost;
+                minimumCost = Math.min(minimumCost, currCost);
+            }
+        }
+		
+        if(minimumCost == Integer.MAX_VALUE)
+        {
+            return -1;
+        }
+
+		return minimumCost;
+	}
+}
